@@ -1,7 +1,7 @@
 module.exports = function (data) {
   return `
 <header>
-  <h1>&lt;my-element></h1>
-  <h2>A web component just for me.</h2>
+  <h1>&lt;medium-feed></h1>
+  <h2>A web component for previewing Medium RSS feeds.</h2>
 </header>`;
 };
