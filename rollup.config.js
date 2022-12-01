@@ -10,7 +10,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 
 export default {
-  input: 'dist/medium-feed.js',
+  input: 'dist/lib/medium-feed.js',
   output: {
     file: 'medium-feed.bundled.js',
     format: 'esm',
