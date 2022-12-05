@@ -18,8 +18,9 @@ export class MediumCardElement extends LitElement {
     static override styles = css`
      :host {
        display: flex;
-       border: solid 1px lightgray;
-       border-radius: 3px;
+       background-color: var(--medium-card-background-color, white);
+       border: var(--medium-card-border, solid 1px lightgray);
+       border-radius: var(--medium-card-border-radius, 3px);
      }
 
     .right {
@@ -29,6 +30,23 @@ export class MediumCardElement extends LitElement {
         justify-content: space-between;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    medium-card-thumbnail {
+        --medium-thumbnail-height: var(--medium-card-height);
+        --medium-thumbnail-border-left-radius: var(--medium-card-border-radius);
+    }
+
+    medium-card-header {
+        --medium-header-color: var(--medium-card-header-color);
+    }
+
+    medium-card-body {
+        --medium-body-color: var(--medium-card-body-color);
+    }
+
+    medium-card-footer {
+        --medium-footer-color: var(--medium-card-footer-color);
     }
     `;
 

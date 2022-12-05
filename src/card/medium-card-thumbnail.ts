@@ -13,8 +13,12 @@ export class MediumCardThumbnailElement extends LitElement {
      }
 
      img {
-        height: 220px;
-        width: 330px;
+        height: var(--medium-thumbnail-height, 220px);
+        width: var(--medium-thumbnail-width, 330px);
+        border-top-left-radius: var(--medium-thumbnail-border-left-radius);
+        border-bottom-left-radius: var(--medium-thumbnail-border-left-radius);
+        border-top-right-radius: var(--medium-thumbnail-border-right-radius);
+        border-bottom-right-radius: var(--medium-thumbnail-border-right-radius);
         object-fit: cover;
      }
      `;

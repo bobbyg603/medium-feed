@@ -12,6 +12,7 @@ import { customElement, property } from 'lit/decorators.js';
             flex-grow: 2;
             overflow: hidden;
             text-overflow: ellipsis;
+            color: var(--medium-body-color);
         }
     `;
 

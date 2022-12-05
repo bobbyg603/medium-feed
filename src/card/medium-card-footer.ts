@@ -10,7 +10,7 @@ export class MediumCardFooterElement extends LitElement {
 
     static override styles = css`
         :host {
-            color: lightgray;
+            color: var(--medium-footer-color, lightgray);
         }
     `;
 

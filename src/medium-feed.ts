@@ -19,6 +19,13 @@ export class MediumPreviewElement extends LitElement {
 
     medium-card {
       cursor: pointer;
+      --medium-card-height: var(--medium-feed-card-height);
+      --medium-card-border: var(--medium-feed-card-border);
+      --medium-card-border-radius: var(--medium-feed-card-border-radius);
+      --medium-card-background-color: var(--medium-feed-card-background-color);
+      --medium-card-header-color: var(--medium-feed-card-header-color);
+      --medium-card-body-color: var(--medium-feed-card-body-color);
+      --medium-card-footer-color: var(--medium-feed-card-footer-color);
     }
   `;
 

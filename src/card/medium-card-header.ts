@@ -15,6 +15,7 @@ export class MediumCardHeaderElement extends LitElement {
 
         h2, h3 {
             margin: 0;
+            color: var(--medium-header-color);
         }
     `;
 
