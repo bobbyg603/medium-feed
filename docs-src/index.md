@@ -42,7 +42,7 @@ const url = 'https://bobbyg603.medium.com/feed';
 render(
   html`
     <h2>This is a &lt;medium-feed&gt;</h2>
-    <medium-feed .url=${url} count=3></medium-feed>
+    <medium-feed url=${url} count=3></medium-feed>
   `,
   document.body
 );

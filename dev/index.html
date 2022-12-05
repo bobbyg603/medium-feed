@@ -10,17 +10,21 @@
     <script type="module" src="../dist/lib/medium-feed.js"></script>
     <script type="module" src="../dist/lib/medium-card.js"></script>
     <style>
+      
       html {
         font-family: "Roboto";
       }
 
-      p {
-        border: solid 1px blue;
-        padding: 8px;
+      .container {
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
       }
     </style>
   </head>
   <body>
-    <medium-feed url="https://bobbyg603.medium.com/feed"></medium-feed>
+    <div class="container">
+      <medium-feed url="https://bobbyg603.medium.com/feed" count="5"></medium-feed>
+    </div>
   </body>
 </html>

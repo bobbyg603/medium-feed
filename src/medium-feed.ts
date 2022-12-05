@@ -1,12 +1,6 @@
-/**
- * @license
- * Copyright 2019 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-
 import { css, html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import "./medium-card";
+import "./card/medium-card";
 import { MediumPost } from './medium-post';
 
 /**
@@ -19,13 +13,8 @@ import { MediumPost } from './medium-post';
 export class MediumPreviewElement extends LitElement {
   static override styles = css`
     :host {
-      display: block;
-    }
-
-    .container {
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      display: flex;
+      flex-direction: column;
     }
 
     medium-card {
@@ -49,24 +38,27 @@ export class MediumPreviewElement extends LitElement {
 
   override render() {
     return html`
-      <div class="container">
       ${
         this._state.posts.slice(0, this.count).map(post => {
+          const header = post.title;
+          const subheader = post.author;
+          const thumbnail = post.thumbnail;
+          const body = `${this.trimContent(post.content)}...`;
+          const footer = post.categories.join(' ');
+
           return html`
             <medium-card 
-              .url=${post.link}
-              .title=${post.title}
-              .author=${post.author}
-              .thumbnail=${post.thumbnail}
-              .categories=${post.categories}
-              .content=${post.content}
+              .thumbnail="${thumbnail}"
+              .header="${header}"
+              .subheader="${subheader}"
+              .body="${body}"
+              .footer="${footer}"
               @click=${() => this.cardClick(post.link)}
             ></medium-card>
             <br>
           `;
         })
       }  
-      </div>
     `;
   }
 
@@ -81,6 +73,17 @@ export class MediumPreviewElement extends LitElement {
     const posts = json.items;
 
     this._state = { posts };
+  }
+
+  private trimContent(content: string) {
+    return content
+      .split("<p>")
+      .splice(3)
+      .join('')
+      .replace(/<\/?[^>]+(>|$)/g, "")
+      .split(' ')
+      .slice(0, 32)
+      .join(' ');
   }
 }
 
