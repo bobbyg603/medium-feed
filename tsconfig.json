@@ -31,6 +31,6 @@
   "include": [
     "src/**/*.ts",
     "test/**/*.ts"
-, "test/medium-feed_test.x", "test/medium-card_test.ts"  ],
+  ],
   "exclude": []
 }

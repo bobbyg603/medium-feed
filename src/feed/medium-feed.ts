@@ -10,7 +10,7 @@ import { MediumPost } from './medium-post';
  * @property count - The number of preview cards to display
  */
 @customElement('medium-feed')
-export class MediumPreviewElement extends LitElement {
+export class MediumFeedElement extends LitElement {
   static override styles = css`
     :host {
       display: flex;
@@ -100,6 +100,6 @@ interface MediumResponse {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'medium-feed': MediumPreviewElement;
+    'medium-feed': MediumFeedElement;
   }
 }
