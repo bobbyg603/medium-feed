@@ -29,7 +29,7 @@ suite('medium-card-thumbnail', () => {
       + `--medium-thumbnail-border-right-radius: ${borderRightRadius};`;
     const el = (await fixture(html`<medium-card-thumbnail style="${style}"></medium-card-thumbnail>`)) as MediumCardThumbnailElement;
     await el.updateComplete;
-    const img = el.shadowRoot!.querySelector('img')!;
+    const img = el.shadowRoot?.querySelector('img')!;
     assert.equal(getComputedStyle(img).height, height);
     assert.equal(getComputedStyle(img).width, width);
     assert.equal(getComputedStyle(img).borderTopLeftRadius, borderLeftRadius);

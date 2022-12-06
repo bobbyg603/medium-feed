@@ -36,7 +36,7 @@ suite('medium-card-header', () => {
     const style = `--medium-header-color: ${color}`;
     const el = (await fixture(html`<medium-card-header style="${style}"></medium-card-header>`)) as MediumCardHeaderElement;
     await el.updateComplete;
-    assert.equal(getComputedStyle(el.shadowRoot!.querySelector('h2')!).color, color);
-    assert.equal(getComputedStyle(el.shadowRoot!.querySelector('h3')!).color, color);
+    assert.equal(getComputedStyle(el.shadowRoot?.querySelector('h2')!).color, color);
+    assert.equal(getComputedStyle(el.shadowRoot?.querySelector('h3')!).color, color);
   });
 });
