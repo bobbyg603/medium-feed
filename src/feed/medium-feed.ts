@@ -1,10 +1,10 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import "./card/medium-card";
+import "../card/medium-card";
 import { MediumPost } from './medium-post';
 
 /**
- * Displays a collection of medium article cards.
+ * Displays a collection of Medium article cards.
  *
  * @property url - The Medium RSS feed url
  * @property count - The number of preview cards to display

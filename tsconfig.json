@@ -7,8 +7,8 @@
     "declarationMap": true,
     "sourceMap": true,
     "inlineSources": true,
-    "outDir": "./dist/lib",
-    "rootDir": "./src",
+    "outDir": "./dist",
+    "rootDir": ".",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -28,6 +28,9 @@
       }
     ]
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts"
+, "test/medium-feed_test.x", "test/medium-card_test.ts"  ],
   "exclude": []
 }

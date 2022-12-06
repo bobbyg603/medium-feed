@@ -11,11 +11,11 @@ export class MediumCardHeaderElement extends LitElement {
     static override styles = css`
         :host {
             flex-grow: 1;
+            color: var(--medium-header-color);
         }
 
         h2, h3 {
             margin: 0;
-            color: var(--medium-header-color);
         }
     `;
 
@@ -27,8 +27,8 @@ export class MediumCardHeaderElement extends LitElement {
 
     override render() {
         return html`
-            <h2 class="header">${this.header}</h2>
-            <h3 class="subheader">${this.subheader}</h3>
+            <h2>${this.header}</h2>
+            <h3>${this.subheader}</h3>
         `;
     }
 }
