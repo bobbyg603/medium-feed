@@ -32,7 +32,7 @@ export class MediumFeedElement extends LitElement {
   @property()
   url = '';
 
-  @property()
+  @property({ type: Number })
   count = 10;
 
   @state()
@@ -45,15 +45,14 @@ export class MediumFeedElement extends LitElement {
 
   override render() {
     return html`
-      ${
-        this._state.posts.slice(0, this.count).map(post => {
-          const header = post.title;
-          const subheader = post.author;
-          const thumbnail = post.thumbnail;
-          const body = `${this.trimContent(post.content)}...`;
-          const footer = post.categories.join(' ');
+      ${this._state.posts.slice(0, this.count).map(post => {
+      const header = post.title;
+      const subheader = post.author;
+      const thumbnail = post.thumbnail;
+      const body = `${this.trimContent(post.content)}...`;
+      const footer = post.categories.join(' ');
 
-          return html`
+      return html`
             <medium-card 
               .thumbnail="${thumbnail}"
               .header="${header}"
@@ -64,7 +63,7 @@ export class MediumFeedElement extends LitElement {
             ></medium-card>
             <br>
           `;
-        })
+    })
       }  
     `;
   }
