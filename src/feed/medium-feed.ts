@@ -44,28 +44,28 @@ export class MediumFeedElement extends LitElement {
   }
 
   override render() {
-    return html`
-      ${this._state.posts.slice(0, this.count).map(post => {
-      const header = post.title;
-      const subheader = post.author;
-      const thumbnail = post.thumbnail;
-      const body = `${this.trimContent(post.content)}...`;
-      const footer = post.categories.join(' ');
+    return html`${this._state.posts
+      .slice(0, this.count)
+      .map(post => {
+        const header = post.title;
+        const subheader = post.author;
+        const thumbnail = post.thumbnail;
+        const body = `${this.trimContent(post.content)}...`;
+        const footer = post.categories.join(' ');
 
-      return html`
-            <medium-card 
-              .thumbnail="${thumbnail}"
-              .header="${header}"
-              .subheader="${subheader}"
-              .body="${body}"
-              .footer="${footer}"
-              @click=${() => this.cardClick(post.link)}
-            ></medium-card>
-            <br>
-          `;
-    })
-      }  
-    `;
+        return html`
+          <medium-card 
+            .thumbnail="${thumbnail}"
+            .header="${header}"
+            .subheader="${subheader}"
+            .body="${body}"
+            .footer="${footer}"
+            @click=${() => this.cardClick(post.link)}
+          ></medium-card>
+          <br>
+        `;
+      })
+    }`;
   }
 
   private cardClick(url: string) {
