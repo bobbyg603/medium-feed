@@ -3,6 +3,7 @@ import { MediumFeedElement } from '../src/feed/medium-feed.js';
 import { assert, fixture, html, waitUntil } from '@open-wc/testing';
 import { article } from './article';
 import sinon from 'sinon';
+import { MediumCardElement } from '../src/index.js';
 
 suite('medium-feed', () => {
   const url = '🔗';
@@ -40,17 +41,42 @@ suite('medium-feed', () => {
     assert.equal(el.shadowRoot?.querySelectorAll('medium-card').length, cards);
   });
 
-  test('trims article content to reasonable length', async () => {
+  test('sets all card properties', async () => {
     const el = await fixture(html`<medium-feed .url="${url}"></medium-feed>`) as MediumFeedElement;
     await el.updateComplete;
     await waitUntil(
       () => el.shadowRoot?.querySelectorAll('medium-card').length === cards,
       'Element did not render children',
     );
-    const firstCard = el.shadowRoot?.querySelector('medium-card');
-    const firstCardBody = firstCard?.shadowRoot?.querySelector('medium-card-body');
-    const words = firstCardBody?.innerHTML.split(' ');
+    const firstCard = el.shadowRoot?.querySelector('medium-card') as MediumCardElement;
+    assert.equal(firstCard?.thumbnail, article.thumbnail);
+    assert.equal(firstCard?.header, article.title);
+    assert.equal(firstCard?.subheader, article.author);
+    assert.isNotEmpty(firstCard?.body);
+    assert.isNotEmpty(firstCard?.footer);
+  });
+
+  test('trims card body to reasonable length', async () => {
+    const el = await fixture(html`<medium-feed .url="${url}"></medium-feed>`) as MediumFeedElement;
+    await el.updateComplete;
+    await waitUntil(
+      () => el.shadowRoot?.querySelectorAll('medium-card').length === cards,
+      'Element did not render children',
+    );
+    const firstCard = el.shadowRoot?.querySelector('medium-card') as MediumCardElement;
+    const words = firstCard?.body.split(' ');
     assert.isTrue(words!.length <= 32);
+  });
+
+  test('creates footer from categories', async () => {
+    const el = await fixture(html`<medium-feed .url="${url}"></medium-feed>`) as MediumFeedElement;
+    await el.updateComplete;
+    await waitUntil(
+      () => el.shadowRoot?.querySelectorAll('medium-card').length === cards,
+      'Element did not render children',
+    );
+    const firstCard = el.shadowRoot?.querySelector('medium-card') as MediumCardElement;
+    assert.equal(firstCard?.footer, article.categories.join(' '));
   });
 
   test('passes css variables to medium card', async () => {
